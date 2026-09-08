@@ -1,9 +1,8 @@
-package com.ga.bankingJava;
+package com.ga.bankingJava.models;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Customer extends Person {
     private CheckingAccount checkingAcc;
@@ -14,8 +13,8 @@ public class Customer extends Person {
     private boolean locked;
     private ArrayList<Transaction> transactionHistory;
 
-    public Customer(String name, int id, String password) {
-        super(name, id, password, "Customer");
+    public Customer(String fname, String lname, int id, String password) {
+        super(fname, lname, id, password, "Customer");
         this.locked = false; //initially isn't locked out
         this.transactionHistory = new ArrayList<Transaction>();
         this.loginAttempts = 0;
