@@ -12,7 +12,7 @@ public class Customer extends Person {
     private int loginAttempts;
     private LocalDateTime lockedOutTime;
     private boolean locked;
-    private ArrayListList<Transaction> transactionHistory;
+    private ArrayList<Transaction> transactionHistory;
 
     public Customer(String name, int id, String password) {
         super(name, id, password, "Customer");
