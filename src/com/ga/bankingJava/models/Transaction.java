@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 public class Transaction {
     private int transactionID;
     private LocalDateTime timestamp;
-    String transactionType; //deposit, withdraw or transfer
+    private String transactionType; //deposit, withdraw or transfer
     private double amount;
     private double postTransBal; //helps in transaction sheets
     private String desc;
 
-    public Transaction(int transactionID, LocalDateTime timestamp, String transactionType, double amount, double postTransBal, String desc) {
+    public Transaction(int transactionID, String transactionType, double amount, double postTransBal, String desc) {
         this.transactionID = transactionID;
         this.timestamp = LocalDateTime.now();
         this.transactionType = transactionType;

@@ -26,50 +26,48 @@ public abstract class DebitCard {
         resetLimit = LocalDate.now();
     }
 
-    private boolean resetDailyLimit(LocalDate date){
-        if(date.isBefore(LocalDate.now())){
+    private void resetDailyLimit(){
+        if(resetLimit.isBefore(LocalDate.now())){
             withdrewToday = 0.0;
             transferredToday = 0.0;
             depositedToday = 0.0;
-            return true;
+            resetLimit = LocalDate.now();
         }
-        return false;
     }
 
-    private boolean canWithdraw(double amount){
-        if (resetDailyLimit(resetLimit)){
-            if (amount + withdrewToday <= dailyWithdraw){
+    public boolean canWithdraw(double amount){
+        resetDailyLimit();
+        if (amount + withdrewToday <= dailyWithdraw){
                 withdrewToday+=amount;
                 System.out.println("Successful Transaction: ");
                 return true;
             }
+            return false;
         }
-        return false;
-    }
 
-    private boolean canTransfer(double amount){
-        if (resetDailyLimit(resetLimit)){
-            if (amount + transferredToday <= dailyTransfer){
+
+    public boolean canTransfer(double amount, boolean ownAccount){
+        resetDailyLimit();
+        double limit = ownAccount ? depositOwnAcc : dailyDeposit;
+        if (amount + transferredToday <= dailyTransfer){
                 transferredToday+=amount;
                 System.out.println("Successful Transaction: ");
                 return true;
             }
-        }
         return false;
     }
 
-    private boolean canDeposit(double amount){
-        if (resetDailyLimit(resetLimit)){
-            if (amount + depositedToday <= dailyDeposit){
+    public boolean canDeposit(double amount, boolean ownAccount){
+        resetDailyLimit();
+        double limit = ownAccount ? depositOwnAcc : dailyDeposit;
+        if (amount + depositedToday <= limit){
                 depositedToday+=amount;
                 System.out.println("Successful Transaction: ");
                 return true;
             }
-        }
         return false;
     }
 
-// setters and getters
     public long getCardNo() {
         return cardNo;
     }
@@ -130,7 +128,7 @@ public abstract class DebitCard {
         return withdrewToday;
     }
 
-    public void setWithdrewToday(double withdrewToday) {
+    protected void setWithdrewToday(double withdrewToday) {
         this.withdrewToday = withdrewToday;
     }
 
@@ -138,23 +136,23 @@ public abstract class DebitCard {
         return transferredToday;
     }
 
-    public void setTransferredToday(double transferredToday) {
+    protected void setTransferredToday(double transferredToday) {
         this.transferredToday = transferredToday;
     }
 
-//    public double getDepositedToday() {
-//        return depositedToday;
-//    }
-//
-//    public void setDepositedToday(double depositedToday) {
-//        this.depositedToday = depositedToday;
-//    }
+    public double getDepositedToday() {
+        return depositedToday;
+    }
+
+    protected void setDepositedToday(double depositedToday) {
+        this.depositedToday = depositedToday;
+    }
 
     public LocalDate getResetLimit() {
         return resetLimit;
     }
 
-    public void setResetLimit(LocalDate resetLimit) {
+    protected void setResetLimit(LocalDate resetLimit) {
         this.resetLimit = resetLimit;
     }
 }
