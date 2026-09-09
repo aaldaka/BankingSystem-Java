@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 
 public class Customer extends Person {
-    private CheckingAccount checkingAcc;
-    private SavingAccount savingAcc;
+    private CheckingAcc checkingAcc;
+    private SavingAcc savingAcc;
     private DebitCard card;
     private int loginAttempts;
     private LocalDateTime lockedOutTime;
@@ -20,19 +20,19 @@ public class Customer extends Person {
         this.loginAttempts = 0;
     }
 
-    public CheckingAccount getCheckingAcc() {
+    public CheckingAcc getCheckingAcc() {
         return checkingAcc;
     }
 
-    public void setCheckingAcc(CheckingAccount checkingAcc) {
+    public void setCheckingAcc(CheckingAcc checkingAcc) {
         this.checkingAcc = checkingAcc;
     }
 
-    public SavingAccount getSavingAcc() {
+    public SavingAcc getSavingAcc() {
         return savingAcc;
     }
 
-    public void setSavingAcc(SavingAccount savingAcc) {
+    public void setSavingAcc(SavingAcc savingAcc) {
         this.savingAcc = savingAcc;
     }
 
