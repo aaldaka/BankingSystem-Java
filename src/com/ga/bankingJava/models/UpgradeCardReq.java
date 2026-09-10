@@ -32,7 +32,7 @@ public class UpgradeCardReq {
         this.status = status;
     }
 
-    public String getSavingReqId() {
+    public String getUpgradeCardReqId() {
         return upgradeCardReqId;
     }
 

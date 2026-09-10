@@ -22,7 +22,7 @@ public class Auth {
         } else if (customerList.containsKey(id)) {
             return loginCustomer(id, password);
         } else {
-            System.out.println("Error:\n No role found. Please register to access the banking system.");
+
             return null;
         }
     }
@@ -32,7 +32,6 @@ public class Auth {
         String pswd = Encryption.hashPassword(password); //checks against password in the db
         if (banker.getPassword().equalsIgnoreCase(pswd)) {
             System.out.println("Welcome back, " + banker.getFname() + " " + banker.getLname());
-            // method to display banker ui
             return banker;
         } else {
             System.out.println("Password is incorrect. Try again.");

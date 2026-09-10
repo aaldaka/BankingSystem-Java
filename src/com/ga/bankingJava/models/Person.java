@@ -1,9 +1,9 @@
 package com.ga.bankingJava.models;
 
 public abstract class Person {
+    private int id;
     private String fname;
     private String lname;
-    private int id;
     private String password;
     private String role;
 
@@ -54,6 +54,4 @@ public abstract class Person {
     public void setRole(String role) {
         this.role = role;
     }
-
-
 }

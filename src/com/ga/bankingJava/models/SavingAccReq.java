@@ -25,4 +25,24 @@ public class SavingAccReq {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public String getSavingReqId() {
+        return savingReqId;
+    }
+
+    public int getCustID() {
+        return custID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public LocalDateTime getReqTimestamp() {
+        return reqTimestamp;
+    }
+
+    public String getDeniedMsg() {
+        return deniedMsg;
+    }
 }
